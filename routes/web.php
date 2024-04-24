@@ -52,12 +52,4 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::post('loans-update/{loan}', [\App\Http\Controllers\LoanController::class, 'update'])->name("loans.update");
     Route::get('loans/edit/{loan}', [\App\Http\Controllers\LoanController::class, 'edit'])->name("loans.edit");
     Route::post('loans/delete/{loan}', [\App\Http\Controllers\LoanController::class, 'delete'])->name("loans.delete");
-
-    Route::get('restocks', [\App\Http\Controllers\RestockController::class, 'list'])->name("restocks.list");
-    Route::get('restocks-show/{restock}', [\App\Http\Controllers\RestockController::class, 'show'])->name("restocks.show");
-    Route::post('restocks-store', [\App\Http\Controllers\RestockController::class, 'store'])->name("restocks.store");
-    Route::get('restocks-create', [\App\Http\Controllers\RestockController::class, 'create'])->name("restocks.create");
-    Route::post('restocks-update/{restock}', [\App\Http\Controllers\RestockController::class, 'update'])->name("restocks.update");
-    Route::get('restocks/edit/{restocks}', [\App\Http\Controllers\RestockController::class, 'edit'])->name("restocks.edit");
-    Route::post('restocks/delete/{restock}', [\App\Http\Controllers\RestockController::class, 'delete'])->name("restocks.delete");
 });

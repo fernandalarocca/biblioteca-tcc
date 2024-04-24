@@ -13,16 +13,13 @@
                     <a class="nav-link" href="{{ route("users.list") }}">Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route("books.list") }}">Livros</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route("authors.list") }}">Autores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route("loans.list") }}">Empréstimos</a>
+                    <a class="nav-link" href="{{ route("books.list") }}">Livros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route("restocks.list") }}">Devoluções</a>
+                    <a class="nav-link" href="{{ route("loans.list") }}">Empréstimos</a>
                 </li>
             </ul>
         </div>

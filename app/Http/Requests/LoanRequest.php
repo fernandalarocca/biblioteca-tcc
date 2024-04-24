@@ -26,7 +26,8 @@ class LoanRequest extends FormRequest
             'clients_name' => ['required', 'string', 'min:3', 'max:255'],
             'cpf' => ['required', 'string', 'min:11', 'max:11'],
             'phone' => ['required', 'string', 'min10', 'max:50'],
-            'date_to_return_book' => ['required', 'date']
+            'date_to_return_book' => ['required', 'date'],
+            'rebounded_book' => ['boolean', 'nullable']
         ];
     }
 }

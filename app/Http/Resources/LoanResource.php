@@ -17,6 +17,7 @@ class LoanResource extends JsonResource
             'cpf' => $this->cpf,
             'phone' => $this->phone,
             'date_to_return_book' => $this->date_to_return_book,
+            'rebounded_book' => $this->rebounded_book,
             'created_at' => $this->created_at->format('d/m/Y H:i'),
             'updated_at' => $this->updated_at->format('d/m/Y H:i')
         ];

@@ -17,7 +17,7 @@ class UserRequest extends FormRequest
                 Rule::unique('users')->ignore($userId)
             ],
             'password' => ['required', 'string', 'min:6', 'max:255'],
-            'is_admin' => ['required', 'boolean']
+            'is_admin' => ['boolean', 'nullable']
         ];
 
         if($this->method('PUT') && $this->user) {

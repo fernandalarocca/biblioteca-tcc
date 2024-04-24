@@ -15,7 +15,8 @@ class Loan extends Model
         'clients_name',
         'cpf',
         'phone',
-        'date_to_return_book'
+        'date_to_return_book',
+        'rebounded_book'
     ];
     public function author()
     {
