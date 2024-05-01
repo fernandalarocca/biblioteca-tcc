@@ -20,6 +20,7 @@
             <th scope="col">Autor</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Data de Devolução</th>
+            <th scope="col">Livro devolvido?</th>
             <th scope="col">Criado em</th>
             <th scope="col">Editado em</th>
         </tr>
@@ -28,13 +29,14 @@
         @foreach($loansResource as $loan)
             <tr>
                 <th scope="row">{{ $loan->id }}</th>
-                <td>{{ $loan->book->title }}</td>
                 <td>{{ $loan->clients_name }}</td>
                 <td>{{ $loan->cpf }}</td>
                 <td>{{ $loan->phone }}</td>
+                <td>{{ $loan->book->title }}</td>
                 <td>{{ $loan->book->author->first_name }} {{ $loan->book->author->last_name }}</td>
                 <td>{{ $loan->quantity }}</td>
                 <td>{{ $loan->date_to_return_book }}</td>
+                <td>{{ $loan->rebounded_book ? 'Sim' : 'Não' }}</td>
                 <td>{{ $loan->created_at }}</td>
                 <td>{{ $loan->updated_at }}</td>
                 <td>

@@ -22,6 +22,7 @@
                 <p class="card-text">Título do Livro: {{ $loan->book->title }} Id: {{ $loan->book->id }}</p>
                 <p class="card-text">Autor: {{ $loan->book->author->first_name }} {{ $loan->book->author->last_name }} Id: {{ $loan->book->author->id }}</p>
                 <p class="card-text">Data de Devolução: {{ $loan->date_to_return_book }}</p>
+                <p class="card-text">Livro devolvido: {{ $loan->rebounded_book ? 'Sim' : 'Não' }}</p>
                 <p class="card-text"><small>Criado em: {{ $loan->created_at }}</small></p>
                 <p class="card-text"><small>Editado em: {{ $loan->updated_at }}</small></p>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Validator::extend('min10', function ($attribute, $value, $parameters, $validator) {
+            return $value >= 10;
+        }, 'O valor para :attribute deve ser no mínimo 10.');
     }
 }

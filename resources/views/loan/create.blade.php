@@ -1,7 +1,7 @@
 @include("layouts.partials.navbar")
 @include("layouts.assets.bootstrap")
 
-<div class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
+<div class="d-flex flex-column align-items-center justify-content-center" style="height: 120vh;">
     <h1 class="text-light mb-4">
         Preencha com as informações do empréstimo!
     </h1>

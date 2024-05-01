@@ -1,7 +1,7 @@
 @include("layouts.partials.navbar")
 @include("layouts.assets.bootstrap")
 
-<div class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
+<div class="d-flex flex-column align-items-center justify-content-center" style="height: 140vh;">
     <h1 class="text-light mb-4">
         Preencha com as informações do empréstimo!
     </h1>
@@ -126,6 +126,35 @@
                 placeholder="Insira a data de devolução"
                 name="date_to_return_book"
                 value="{{ $loan->date_to_return_book }}"
+            >
+        </div>
+        <p class="text-light">O livro foi devolvido?</p>
+        <div class="form-check">
+            <label
+                class="form-check-label text-light"
+                for="flexRadioDefault1">
+                Sim
+            </label>
+            <input
+                class="form-check-input"
+                type="radio"
+                name="rebounded_book"
+                id="flexRadioDefault1"
+                value="1"
+            >
+        </div>
+        <div class="form-check mb-3">
+            <label
+                class="form-check-label text-light"
+                for="flexRadioDefault2">
+                Não
+            </label>
+            <input
+                class="form-check-input"
+                type="radio"
+                name="rebounded_book"
+                id="flexRadioDefault2"
+                value="0"
             >
         </div>
         <div class="d-flex justify-content-between">
