@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="https://files.oaiusercontent.com/file-Ni8aVfAvD2c9x5A5Ls3AfaWO?se=2024-05-01T18%3A41%3A56Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Defc5c008-3c26-4bc6-82fa-e409a7d8fb25.webp&sig=5eWo6cHPdN3nYW208USccLA2tVKxk/A/97bq5uP9Uh4%3D" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="/resources/views/layouts/assets/images/bibliotec%20logo.png" width="400" alt="Laravel Logo"></a></p>
 
 ## Sobre o BiblioTec
 
