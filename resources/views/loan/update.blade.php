@@ -65,36 +65,26 @@
             >
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputBook1"
-                class="form-label text-light">
+            <label for="exampleInputBook1" class="form-label text-light">
                 Livro:
             </label>
-            <input
-                type="text"
-                class="form-control"
-                id="exampleInputBook1"
-                aria-describedby="bookHelp"
-                placeholder="Insira o id do livro"
-                name="book_id"
-                value="{{ $loan->book->id }}"
-            >
+            <select class="form-control" id="exampleInputBook1" name="book_id" aria-describedby="bookHelp">
+                @foreach($booksResource as $book)
+                    <option value="{{ $book->id }}" {{ $book->id == $loan->book_id ? 'selected' : '' }}>{{ $book->title }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputAuthor1"
-                class="form-label text-light">
+            <label for="exampleInputAuthor1" class="form-label text-light">
                 Autor:
             </label>
-            <input
-                type="text"
-                class="form-control"
-                id="exampleInputAuthor1"
-                aria-describedby="AuthorHelp"
-                placeholder="Insira o id do autor"
-                name="author_id"
-                value="{{ $loan->book->author->id }}"
-            >
+            <select class="form-control" id="exampleInputAuthor1" name="author_id" aria-describedby="authorHelp">
+                @foreach($authorsResource as $author)
+                    <option value="{{ $author->id }}" {{ $author->id == $loan->author_id ? 'selected' : '' }}>
+                        {{ $author->first_name }} {{ $author->last_name }}
+                    </option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label

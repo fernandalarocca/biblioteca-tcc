@@ -7,6 +7,7 @@ use App\Actions\Loan\CreateLoanAction;
 use App\Actions\Loan\UpdateLoanAction;
 use App\Http\Requests\LoanRequest;
 use App\Http\Resources\LoanResource;
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Loan;
 
@@ -28,7 +29,10 @@ class LoanController extends Controller
 
     public function create()
     {
-        return view('loan.create');
+        $booksResource = Book::all();
+        $authorsResource = Author::all();
+        return view('loan.create', compact('booksResource', 'authorsResource'));
+        //return view('loan.create');
     }
 
     public function store(LoanRequest $request)
@@ -45,7 +49,10 @@ class LoanController extends Controller
 
     public function edit(Loan $loan)
     {
-        return view('loan.update', compact("loan"));
+        $booksResource = Book::all();
+        $authorsResource = Author::all();
+        return view('loan.update', compact('booksResource', 'authorsResource', 'loan'));
+        //return view('loan.update', compact("loan"));
     }
 
     public function update(LoanRequest $request, Loan $loan)
