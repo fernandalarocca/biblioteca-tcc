@@ -32,7 +32,6 @@ class LoanController extends Controller
         $booksResource = Book::all();
         $authorsResource = Author::all();
         return view('loan.create', compact('booksResource', 'authorsResource'));
-        //return view('loan.create');
     }
 
     public function store(LoanRequest $request)
@@ -52,7 +51,6 @@ class LoanController extends Controller
         $booksResource = Book::all();
         $authorsResource = Author::all();
         return view('loan.update', compact('booksResource', 'authorsResource', 'loan'));
-        //return view('loan.update', compact("loan"));
     }
 
     public function update(LoanRequest $request, Loan $loan)

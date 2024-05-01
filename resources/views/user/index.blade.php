@@ -15,7 +15,6 @@
             <th scope="col">Id</th>
             <th scope="col">Nome</th>
             <th scope="col">E-mail</th>
-            <th scope="col">Tipo de Usuário</th>
             <th scope="col">Criado em</th>
             <th scope="col">Editado em</th>
         </tr>

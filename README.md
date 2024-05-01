@@ -1,66 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="https://files.oaiusercontent.com/file-Ni8aVfAvD2c9x5A5Ls3AfaWO?se=2024-05-01T18%3A41%3A56Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Defc5c008-3c26-4bc6-82fa-e409a7d8fb25.webp&sig=5eWo6cHPdN3nYW208USccLA2tVKxk/A/97bq5uP9Uh4%3D" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Sobre o BiblioTec
 
-## About Laravel
+BiblioTec é um sistema de gerenciamento de biblioteca feito para o bibliotecário organizar os autores, livros e empréstimos em seu estabelecimento.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Funcionalidades
+- Criar, listar, editar e excluir autores.
+- Criar, listar, editar e excluir livros.
+- Criar, listar, editar e excluir empréstimos de livros.
+- Criar, listar, editar e excluir usuários.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+O sistema foi desenvolvido utilizando a linguagem de programação <a href="https://www.php.net">PHP</a> com o framework <a href="https://laravel.com">Laravel</a>, o front-end foi feito usando o <a href="https://laravel.com/docs/11.x/blade#main-content">Blade</a> e o <a href="https://getbootstrap.com">Bootstrap</a> como framework CSS. Além disso, o banco de dados escolhido foi o <a href="https://www.postgresql.org">PostgreSQL</a>.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Como Utilizar
 
-## Learning Laravel
+Para maior entendimento sobre o software, farei uma explicação de como utiliza-lo
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Autenticação
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Quando abrimos o BiblioTec ele nos apresenta a página principal do sistema, porém, note que se você tenta acessar as abas de autores, livros, emprétimos e usuários sem estar logado o softwre irá levá-lo para a tela de login automaticamente. <br>
+Ou seja, para fazer uso das funcionalidades é necessário estar logado com uma conta cadastrada no sistema.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Usuários
 
-## Laravel Sponsors
+Antes de irmos para as funções que dizem respeito ao gerenciamento da biblioteca de fato, falarei sobre como funciona a criação, edição e exclusão de usuários.<br>
+Na tela inicial do sistema, temos um cabeçalho, nele a primeira opção "BiblioTec" leva direto à home, ao lado direito dessa opção, temos "Usuários", cliclando nela vamos para a página com as informações sobre os usuários do sistema.<br>
+Nessa página, note que temos uma tabela que lista todos os usuários cadastrados no banco e suas respectivas informações de id, nome e e-mail, além disso, temos também as datas de quando ele foi criado e editado pela última vez.<br>
+Ainda nessa tela, temos algumas opções do que podemos realizar com esses usários:
+- Note que no canto superior direito há um botão verde escrito "Novo Usuário", clicando nele, vamos para o formulário de criação. Dentro dele devemos preencher as informações de: Nome, e-mail e senha. Caso tenha clicado errado, pode voltar para a página anterior usando o botão "Voltar", mas, se deseja de fato criar o usuário, clique em "Criar", se todas as informações tiverem sido preenchidas corretamente você retornará para a tela de listagem, senão o sistema retornará um erro sinalizando o problema.<br>
+- Em cada usuário temos um botão azul escrito "Ver", clicando nele vamos para a página que mostra as informações mais detalhadas sobre o usuário. Ainda nessa tela, temos um botão cinza escrito "Voltar" que ao ser selecionado volta para a página de listagem.
+- Ao lado do botão anterior temos um botão amarelo escrito "Editar" que nos leva para a tela onde podemos editar as informações dele. Caso queira voltar para a tela anterior clique em "Voltar", agora se deseja realizar as alterações aperte em "Editar".
+- Por último, temos a opção do botão vermelho "Excluir", ao clicar nela o sistema abrirá um pop-up pedindo a confirmação se você deseja mesmo excluir esse usuário, se sim clique em "Excluir", senão clique em "Cancelar" ou no X no canto superior direito do modal.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Autores
 
-### Premium Partners
+No BiblioTec para criarmos um empréstimo precisamos saber quais livros e quais autores serão selecionados, para criar um livro é necessário associá-lo com um autor. Portanto a primeira coisa a ser feita para usar o sistema é criar o autor.<br>
+Para isso, selecione a opção "Autores" dentro do cabeçalho. As funções serão iguais aos métodos que expliquei sobre os usuários, mudando apenas as informações a serem preenchdas nos formulários.
+- No botão "Novo Autor" vamos para a tela do formulário de criação, nele precisamos preencher os dados de: Nome, sobrenome, descrição e idade. Caso queira voltar para a página anterior, clique em "Voltar", mas se quer criar o autor, aperte em "criar", se houver algum problema, o sistema irá notificá-lo.
+- Agora, ao clicar no botão "Ver", temos as informações de maneira mais detalhada e visível. Para voltar para a listagem, clique em "Voltar".
+- Para editar o autor, clique em "Editar", faça as alterações desejadas e clique em "Editar".
+- Ao lado do botão amarelo escrito "Editar" temos a opção de excluir aquele autor. Assim como com os usuários, será aberto um modal pedindo a confirmação da exclusão. Note que para excluir um autor, ele não pode estar associado a nenhum livro e nenhum empréstimo.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Livros
 
-## Contributing
+Partindo agora para as funcionalidades que dizem respeito aos livros, elas vão funcionar exatamente como as outras, apenas mudando os dados necessários. Portanto, clique na opção "Livros" dentro do cabeçalho.
+- Criação: Clique no botão "Novo Livro" e preencha as informações: Título, data de publicação, categoria, autor, sinopse e quantidade em estoque. Quando preencher tudo, aperte em "Criar" para salvar o livro.
+- Visualização: Ao apertar no botão "Ver" temos a página que mostra com mais detalhes as informações do livro.
+- Edição: Para isso, clique em "Editar" e mude os dados que deseja atualizar. Sempre lembre de clicar em "Editar" para salvar as alterações.
+- Exclusão: Assim como nas outras opções ao clicar em "Excluir" o sistema abrirá um modal confirmando se você deseja mesmo excluir esse livro.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Empréstimos
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Por último, temos a função de empréstimos. Ela serve para quando o cliente pega um livro emprestado da biblioteca. Assim como os outros métodos, ela funcionará de maneira muito parecida, a única diferença é que tem algumas implementações a mais. Além disso, quando o empréstimo for criado, a quantidade de livros emprestados será automaticamente diminuída do estoque daquele livro em questão.<br>
+Para utilizar clique em "Empréstimos" no cabeçalho.
+- Para criar um empréstimo, clique em "Novo Empréstimo" e preencha as informações de: Nome do cliente, CPF do cliente, telefone do cliente, livro escolhido, autor do livro em questão, quantidade e data de devolução. Importante ressaltar que a quantidade de livros emprestados tem que ser menor do que a quantidade em estoque daquele livro, senão não funcionará.
+- Para ver com mais detalhes as informações do empréstimo, clique em "Ver".
+- Agora para editar o empréstimo, aperte em "Editar" e mude as informações necessárias. Note que no formulário de edição, temos um campo a mais, ele serve para que quando o livro for devolvido o bibliotecário marque-o como "Sim". Quando esse campo for marcado como verdadeiro, ou seja, "Sim", a quantidade de livros emprestados será devolvida (adicionada) novamente ao estoque de maneira automática, para que o bibliotecário não precise fazer isso manualmente.
+- Por último, assim como nos outros, podemos excluir o empréstimo clicando no botão "Excluir", quando clicado abrirá um modal solicitando a confirmação da exclusão.

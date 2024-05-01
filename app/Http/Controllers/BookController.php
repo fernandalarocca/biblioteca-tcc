@@ -6,6 +6,7 @@ use App\Actions\Book\CreateBookAction;
 use App\Actions\Book\UpdateBookAction;
 use App\Http\Requests\BookRequest;
 use App\Http\Resources\BookResource;
+use App\Models\Author;
 use App\Models\Book;
 
 class BookController extends Controller
@@ -26,7 +27,8 @@ class BookController extends Controller
 
     public function create()
     {
-        return view('book.create');
+        $authorsResource = Author::all();
+        return view('book.create', compact('authorsResource'));
     }
 
     public function store(BookRequest $request)
@@ -38,7 +40,8 @@ class BookController extends Controller
 
     public function edit(Book $book)
     {
-        return view('book.update', compact("book"));
+        $authorsResource = Author::all();
+        return view('book.update', compact('book', 'authorsResource'));
     }
 
     public function update(BookRequest $request, Book $book)
