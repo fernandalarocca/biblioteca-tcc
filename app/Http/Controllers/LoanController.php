@@ -47,8 +47,8 @@ class LoanController extends Controller
 
         Log::create([
             'user_email' => Auth::user()->email,
-            'method' => 'criou',
-            'item' => 'empréstimo',
+            'method' => 'Criou',
+            'item' => 'Empréstimo: ' . $loan->id,
         ]);
 
         return redirect()->route('loans.list');
@@ -67,8 +67,8 @@ class LoanController extends Controller
         $loan = (new UpdateLoanAction())->execute($data, $loan);
         Log::create([
             'user_email' => Auth::user()->email,
-            'method' => 'editou',
-            'item' => 'empréstimo',
+            'method' => 'Editou',
+            'item' => 'Empréstimo: ' . $loan->id,
         ]);
         return redirect()->route('loans.list');
     }
@@ -78,8 +78,8 @@ class LoanController extends Controller
         $loan->delete();
         Log::create([
             'user_email' => Auth::user()->email,
-            'method' => 'excluiu',
-            'item' => 'empréstimo',
+            'method' => 'Excluiu',
+            'item' => 'Empréstimo: ' . $loan->id,
         ]);
         return redirect()->back();
     }

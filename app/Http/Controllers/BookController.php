@@ -41,8 +41,8 @@ class BookController extends Controller
         $book = (new CreateBookAction())->execute($data);
         Log::create([
             'user_email' => Auth::user()->email,
-            'method' => 'criou',
-            'item' => 'livro',
+            'method' => 'Criou',
+            'item' => 'Livro: ' . $book->title,
         ]);
         return redirect()->route('books.list');
     }
@@ -59,8 +59,8 @@ class BookController extends Controller
         $book = (new UpdateBookAction())->execute($data, $book);
         Log::create([
             'user_email' => Auth::user()->email,
-            'method' => 'editou',
-            'item' => 'livro',
+            'method' => 'Editou',
+            'item' => 'Livro: ' . $book->title,
         ]);
         return redirect()->route('books.list');
     }
@@ -71,8 +71,8 @@ class BookController extends Controller
             $book->delete();
             Log::create([
                 'user_email' => Auth::user()->email,
-                'method' => 'excluiu',
-                'item' => 'livro',
+                'method' => 'Excluiu',
+                'item' => 'Livro: ' . $book->title,
             ]);
             return redirect()->back()->with('success', 'Livro excluído com sucesso.');
         } catch (DeletionProhibitedException $e) {

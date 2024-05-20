@@ -8,8 +8,8 @@ use App\Exceptions\DeletionProhibitedException;
 use App\Http\Requests\AuthorRequest;
 use App\Http\Resources\AuthorResource;
 use App\Models\Author;
-use Illuminate\Http\Request;
-use App\Models\Log;
+use App\Models\Log as LogModel;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
@@ -37,11 +37,13 @@ class AuthorController extends Controller
     {
         $data = $request->validated();
         $author = (new CreateAuthorAction())->execute($data);
-        Log::create([
+
+        LogModel::create([
             'user_email' => Auth::user()->email,
-            'method' => 'criou',
-            'item' => 'autor',
+            'method' => 'Criou',
+            'item' => 'Autor: ' . $author->first_name . ' ' . $author->last_name,
         ]);
+
         return redirect()->route('authors.list');
     }
 
@@ -54,11 +56,13 @@ class AuthorController extends Controller
     {
         $data = $request->validated();
         $author = (new UpdateAuthorAction())->execute($data, $author);
-        Log::create([
+
+        LogModel::create([
             'user_email' => Auth::user()->email,
-            'method' => 'editou',
-            'item' => 'autor',
+            'method' => 'Editou',
+            'item' => 'Autor: ' . $author->first_name . ' ' . $author->last_name,
         ]);
+
         return redirect()->route('authors.list');
     }
 
@@ -67,11 +71,13 @@ class AuthorController extends Controller
         try {
             Log::info('Tentando excluir o autor:', ['author_id' => $author->id]);
             $author->delete();
-            Log::create([
+
+            LogModel::create([
                 'user_email' => Auth::user()->email,
-                'method' => 'excluiu',
-                'item' => 'autor',
+                'method' => 'Excluiu',
+                'item' => 'Autor: ' . $author->first_name . ' ' . $author->last_name,
             ]);
+
             Log::info('Autor excluído com sucesso:', ['author_id' => $author->id]);
             return redirect()->back()->with('success', 'Autor excluído com sucesso.');
         } catch (DeletionProhibitedException $e) {
@@ -83,4 +89,3 @@ class AuthorController extends Controller
         }
     }
 }
-

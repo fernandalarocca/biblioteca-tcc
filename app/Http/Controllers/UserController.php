@@ -9,6 +9,8 @@ use App\Http\Resources\UserResource;
 use App\Models\Log;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,8 +39,8 @@ class UserController extends Controller
         $user = (new CreateUserAction())->execute($data);
         Log::create([
             'user_email' => Auth::user()->email,
-            'method' => 'criou',
-            'item' => 'usuário',
+            'method' => 'Criou',
+            'item' => 'Usuário: ' . $user->email,
         ]);
         return redirect()->route('users.list');
     }
@@ -54,10 +56,22 @@ class UserController extends Controller
         $user = (new UpdateUserAction())->execute($data, $user);
         Log::create([
             'user_email' => Auth::user()->email,
-            'method' => 'editou',
-            'item' => 'usuário',
+            'method' => 'Editou',
+            'item' => 'Usuário: ' . $user->email,
         ]);
         return redirect()->route('users.list');
+    }
+
+    public function updatePassword(Request $request, User $user)
+    {
+        $request->validate([
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('users.edit', $user->id)->with('success', 'Senha atualizada com sucesso.');
     }
 
     public function delete(User $user)
@@ -65,8 +79,8 @@ class UserController extends Controller
         $user->delete();
         Log::create([
             'user_email' => Auth::user()->email,
-            'method' => 'excluiu',
-            'item' => 'usuário',
+            'method' => 'Excluiu',
+            'item' => 'Usuário: ' . $user->email,
         ]);
         return redirect()->back();
     }

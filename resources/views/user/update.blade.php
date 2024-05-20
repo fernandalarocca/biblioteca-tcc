@@ -17,11 +17,7 @@
     <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         <div class="mb-3">
-            <label
-                for="exampleInputName1"
-                class="form-label text-light">
-                Nome:
-            </label>
+            <label for="exampleInputName1" class="form-label text-light">Nome:</label>
             <input
                 type="text"
                 class="form-control"
@@ -33,11 +29,7 @@
             >
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputEmail1"
-                class="form-label text-light">
-                E-mail:
-            </label>
+            <label for="exampleInputEmail1" class="form-label text-light">E-mail:</label>
             <input
                 type="email"
                 class="form-control"
@@ -53,4 +45,34 @@
             <button type="submit" class="btn btn-success">Editar</button>
         </div>
     </form>
+    <div id="newPassword" class="form-text text-info" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Clique aqui para alterar a senha do usuário.</div>
+</div>
+
+<!-- Modal para alterar a senha -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModalLabel">Alterar Senha</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('users.update.password', $user->id) }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="newPasswordInput" class="form-label">Nova Senha</label>
+                        <input type="password" class="form-control" id="newPasswordInput" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPasswordInput" class="form-label">Confirmar Nova Senha</label>
+                        <input type="password" class="form-control" id="confirmPasswordInput" name="password_confirmation" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
