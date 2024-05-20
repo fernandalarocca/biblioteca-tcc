@@ -149,7 +149,7 @@
         </div>
         <div class="d-flex justify-content-between">
             <a href="{{ route('loans.list') }}" class="btn btn-secondary">Voltar</a>
-            <button type="submit" class="btn btn-success">Criar</button>
+            <button type="submit" class="btn btn-success">Editar</button>
         </div>
     </form>
 </div>

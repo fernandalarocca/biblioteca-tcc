@@ -75,12 +75,17 @@ class LoanController extends Controller
 
     public function delete(Loan $loan)
     {
-        $loan->delete();
-        Log::create([
-            'user_email' => Auth::user()->email,
-            'method' => 'Excluiu',
-            'item' => 'Empréstimo: ' . $loan->id,
-        ]);
-        return redirect()->back();
+        try {
+            $loan->delete();
+            Log::create([
+                'user_email' => Auth::user()->email,
+                'method' => 'Excluiu',
+                'item' => 'Empréstimo: ' . $loan->id,
+            ]);
+            return redirect()->back()->with('success', 'Empréstimo excluído com sucesso.');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao excluir o empréstimo (Exception):', ['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => 'Ocorreu um erro ao excluir o empréstimo.']);
+        }
     }
 }

@@ -76,12 +76,17 @@ class UserController extends Controller
 
     public function delete(User $user)
     {
-        $user->delete();
-        Log::create([
-            'user_email' => Auth::user()->email,
-            'method' => 'Excluiu',
-            'item' => 'Usuário: ' . $user->email,
-        ]);
-        return redirect()->back();
+        try {
+            $user->delete();
+            Log::create([
+                'user_email' => Auth::user()->email,
+                'method' => 'Excluiu',
+                'item' => 'Usuário: ' . $user->email,
+            ]);
+            return redirect()->back()->with('success', 'Usuário excluído com sucesso.');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Erro ao excluir o usuário (Exception):', ['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => 'Ocorreu um erro ao excluir o usuário.']);
+        }
     }
 }
