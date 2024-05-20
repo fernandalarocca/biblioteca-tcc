@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Actions\Author\CreateAuthorAction;
 use App\Actions\Author\UpdateAuthorAction;
+use App\Exceptions\DeletionProhibitedException;
 use App\Http\Requests\AuthorRequest;
 use App\Http\Resources\AuthorResource;
 use App\Models\Author;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AuthorController extends Controller
 {
@@ -50,8 +53,18 @@ class AuthorController extends Controller
 
     public function delete(Author $author)
     {
-        $author->loans()->delete();
-        $author->delete();
-        return redirect()->back();
+        try {
+            Log::info('Tentando excluir o autor:', ['author_id' => $author->id]);
+            $author->delete();
+            Log::info('Autor excluído com sucesso:', ['author_id' => $author->id]);
+            return redirect()->back()->with('success', 'Autor excluído com sucesso.');
+        } catch (DeletionProhibitedException $e) {
+            Log::error('Erro ao excluir o autor (DeletionProhibitedException):', ['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        } catch (\Exception $e) {
+            Log::error('Erro ao excluir o autor (Exception):', ['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => 'Ocorreu um erro ao excluir o autor.']);
+        }
     }
 }
+

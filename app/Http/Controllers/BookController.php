@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Actions\Book\CreateBookAction;
 use App\Actions\Book\UpdateBookAction;
+use App\Exceptions\DeletionProhibitedException;
 use App\Http\Requests\BookRequest;
 use App\Http\Resources\BookResource;
 use App\Models\Author;
 use App\Models\Book;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -53,8 +55,14 @@ class BookController extends Controller
 
     public function delete(Book $book)
     {
-        $book->loans()->delete();
-        $book->delete();
-        return redirect()->back();
+        try {
+            $book->delete();
+            return redirect()->back()->with('success', 'Livro excluído com sucesso.');
+        } catch (DeletionProhibitedException $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Ocorreu um erro ao excluir o livro.']);
+        }
     }
 }
+
