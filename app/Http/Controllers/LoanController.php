@@ -10,6 +10,8 @@ use App\Http\Resources\LoanResource;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Loan;
+use App\Models\Log;
+use Illuminate\Support\Facades\Auth;
 
 class LoanController extends Controller
 {
@@ -43,6 +45,12 @@ class LoanController extends Controller
         (new SubtractionBookQuantityInStock())
             ->execute($book, data_get($data,'quantity', 1));
 
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'criou',
+            'item' => 'empréstimo',
+        ]);
+
         return redirect()->route('loans.list');
     }
 
@@ -57,12 +65,22 @@ class LoanController extends Controller
     {
         $data = $request->validated();
         $loan = (new UpdateLoanAction())->execute($data, $loan);
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'editou',
+            'item' => 'empréstimo',
+        ]);
         return redirect()->route('loans.list');
     }
 
     public function delete(Loan $loan)
     {
         $loan->delete();
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'excluiu',
+            'item' => 'empréstimo',
+        ]);
         return redirect()->back();
     }
 }

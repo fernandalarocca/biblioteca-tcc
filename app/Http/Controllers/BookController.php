@@ -9,7 +9,9 @@ use App\Http\Requests\BookRequest;
 use App\Http\Resources\BookResource;
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -37,6 +39,11 @@ class BookController extends Controller
     {
         $data = $request->validated();
         $book = (new CreateBookAction())->execute($data);
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'criou',
+            'item' => 'livro',
+        ]);
         return redirect()->route('books.list');
     }
 
@@ -50,6 +57,11 @@ class BookController extends Controller
     {
         $data = $request->validated();
         $book = (new UpdateBookAction())->execute($data, $book);
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'editou',
+            'item' => 'livro',
+        ]);
         return redirect()->route('books.list');
     }
 
@@ -57,6 +69,11 @@ class BookController extends Controller
     {
         try {
             $book->delete();
+            Log::create([
+                'user_email' => Auth::user()->email,
+                'method' => 'excluiu',
+                'item' => 'livro',
+            ]);
             return redirect()->back()->with('success', 'Livro excluído com sucesso.');
         } catch (DeletionProhibitedException $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);

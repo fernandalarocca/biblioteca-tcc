@@ -52,4 +52,6 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::post('loans-update/{loan}', [\App\Http\Controllers\LoanController::class, 'update'])->name("loans.update");
     Route::get('loans/edit/{loan}', [\App\Http\Controllers\LoanController::class, 'edit'])->name("loans.edit");
     Route::post('loans/delete/{loan}', [\App\Http\Controllers\LoanController::class, 'delete'])->name("loans.delete");
+
+    Route::get('/logs', [\App\Http\Controllers\LogController::class, 'index'])->name('logs.index');
 });

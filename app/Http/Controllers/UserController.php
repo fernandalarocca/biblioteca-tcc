@@ -6,7 +6,9 @@ use App\Actions\User\CreateUserAction;
 use App\Actions\User\UpdateUserAction;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Log;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -33,6 +35,11 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $user = (new CreateUserAction())->execute($data);
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'criou',
+            'item' => 'usuário',
+        ]);
         return redirect()->route('users.list');
     }
 
@@ -45,12 +52,22 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $user = (new UpdateUserAction())->execute($data, $user);
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'editou',
+            'item' => 'usuário',
+        ]);
         return redirect()->route('users.list');
     }
 
     public function delete(User $user)
     {
         $user->delete();
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'excluiu',
+            'item' => 'usuário',
+        ]);
         return redirect()->back();
     }
 }

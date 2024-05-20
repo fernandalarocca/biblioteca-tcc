@@ -9,7 +9,8 @@ use App\Http\Requests\AuthorRequest;
 use App\Http\Resources\AuthorResource;
 use App\Models\Author;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use App\Models\Log;
+use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
 {
@@ -36,6 +37,11 @@ class AuthorController extends Controller
     {
         $data = $request->validated();
         $author = (new CreateAuthorAction())->execute($data);
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'criou',
+            'item' => 'autor',
+        ]);
         return redirect()->route('authors.list');
     }
 
@@ -48,6 +54,11 @@ class AuthorController extends Controller
     {
         $data = $request->validated();
         $author = (new UpdateAuthorAction())->execute($data, $author);
+        Log::create([
+            'user_email' => Auth::user()->email,
+            'method' => 'editou',
+            'item' => 'autor',
+        ]);
         return redirect()->route('authors.list');
     }
 
@@ -56,6 +67,11 @@ class AuthorController extends Controller
         try {
             Log::info('Tentando excluir o autor:', ['author_id' => $author->id]);
             $author->delete();
+            Log::create([
+                'user_email' => Auth::user()->email,
+                'method' => 'excluiu',
+                'item' => 'autor',
+            ]);
             Log::info('Autor excluído com sucesso:', ['author_id' => $author->id]);
             return redirect()->back()->with('success', 'Autor excluído com sucesso.');
         } catch (DeletionProhibitedException $e) {
