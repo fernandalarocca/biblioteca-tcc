@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
@@ -37,12 +38,17 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $user = (new CreateUserAction())->execute($data);
+
+        event(new Registered($user));
+        $user->sendEmailVerificationNotification();
+
         Log::create([
             'user_email' => Auth::user()->email,
             'method' => 'Criou',
             'item' => 'Usuário: ' . $user->email,
         ]);
-        return redirect()->route('users.list');
+
+        return redirect()->route('verification.notice');
     }
 
     public function edit(User $user)
@@ -54,11 +60,13 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $user = (new UpdateUserAction())->execute($data, $user);
+
         Log::create([
             'user_email' => Auth::user()->email,
             'method' => 'Editou',
             'item' => 'Usuário: ' . $user->email,
         ]);
+
         return redirect()->route('users.list');
     }
 
