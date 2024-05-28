@@ -48,7 +48,7 @@ class UserController extends Controller
             'item' => 'Usuário: ' . $user->email,
         ]);
 
-        return redirect()->route('verification.notice');
+        return redirect()->route('users.list');
     }
 
     public function edit(User $user)

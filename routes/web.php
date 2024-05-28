@@ -48,7 +48,6 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::get('/logs', [\App\Http\Controllers\LogController::class, 'index'])->name('logs.index');
 });
 
-// Rotas de verificação de e-mail
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
