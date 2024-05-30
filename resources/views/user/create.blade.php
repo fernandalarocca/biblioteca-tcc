@@ -10,7 +10,7 @@
 @include("layouts.partials.navbar")
 
 <div class="d-flex flex-column align-items-center justify-content-center vh-100 bg-dark text-light">
-    <h1 class="mb-4 text-center">
+    <h1 class="mb-4 text-center mt-4">
         Preencha com as informações do usuário!
     </h1>
     @if ($errors->any())
@@ -57,7 +57,7 @@
                 name="password"
             >
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mb-4">
             <a href="{{ route('users.list') }}" class="btn btn-secondary">Voltar</a>
             <button type="submit" class="btn btn-success">Criar</button>
         </div>

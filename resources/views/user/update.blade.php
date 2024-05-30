@@ -10,7 +10,7 @@
 @include("layouts.partials.navbar")
 
 <div class="d-flex flex-column align-items-center justify-content-center vh-100 bg-dark text-light">
-    <h1 class="mb-4 text-center">
+    <h1 class="mb-4 text-center mt-4">
         Preencha com as informações do usuário!
     </h1>
     @if ($errors->any())
@@ -76,7 +76,7 @@
                         <input type="password" class="form-control" id="confirmPasswordInput" name="password_confirmation" required>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer mb-4">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>

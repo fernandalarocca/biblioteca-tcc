@@ -1,12 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Empréstimo</title>
+    @include("layouts.assets.bootstrap")
+</head>
+<body>
 @include("layouts.partials.navbar")
-@include("layouts.assets.bootstrap")
 
-<div class="d-flex flex-column align-items-center justify-content-center" style="height: 140vh;">
-    <h1 class="text-light mb-4">
+<div class="d-flex flex-column align-items-center justify-content-center bg-dark text-light">
+    <h1 class="mb-4 text-center mt-4">
         Preencha com as informações do empréstimo!
     </h1>
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger w-75">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -14,14 +22,10 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('loans.update', $loan->id) }}" method="POST">
+    <form action="{{ route('loans.update', $loan->id) }}" method="POST" class="w-75">
         @csrf
         <div class="mb-3">
-            <label
-                for="exampleInputClientsName1"
-                class="form-label text-light">
-                Nome do Cliente:
-            </label>
+            <label for="exampleInputClientsName1" class="form-label">Nome do Cliente:</label>
             <input
                 type="text"
                 class="form-control"
@@ -33,11 +37,7 @@
             >
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputCPF1"
-                class="form-label text-light">
-                CPF:
-            </label>
+            <label for="exampleInputCPF1" class="form-label">CPF:</label>
             <input
                 type="text"
                 class="form-control"
@@ -49,11 +49,7 @@
             >
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputPhone1"
-                class="form-label text-light">
-                Telefone:
-            </label>
+            <label for="exampleInputPhone1" class="form-label">Telefone:</label>
             <input
                 type="tel"
                 class="form-control"
@@ -65,9 +61,7 @@
             >
         </div>
         <div class="mb-3">
-            <label for="exampleInputBook1" class="form-label text-light">
-                Livro:
-            </label>
+            <label for="exampleInputBook1" class="form-label">Livro:</label>
             <select class="form-control" id="exampleInputBook1" name="book_id" aria-describedby="bookHelp">
                 @foreach($booksResource as $book)
                     <option value="{{ $book->id }}" {{ $book->id == $loan->book_id ? 'selected' : '' }}>{{ $book->title }}</option>
@@ -75,9 +69,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="exampleInputAuthor1" class="form-label text-light">
-                Autor:
-            </label>
+            <label for="exampleInputAuthor1" class="form-label">Autor:</label>
             <select class="form-control" id="exampleInputAuthor1" name="author_id" aria-describedby="authorHelp">
                 @foreach($authorsResource as $author)
                     <option value="{{ $author->id }}" {{ $author->id == $loan->author_id ? 'selected' : '' }}>
@@ -87,11 +79,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputQuantity1"
-                class="form-label text-light">
-                Quantidade:
-            </label>
+            <label for="exampleInputQuantity1" class="form-label">Quantidade:</label>
             <input
                 type="number"
                 class="form-control"
@@ -103,11 +91,7 @@
             >
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputReturn1"
-                class="form-label text-light">
-                Data de Devolução:
-            </label>
+            <label for="exampleInputReturn1" class="form-label">Data de Devolução:</label>
             <input
                 type="date"
                 class="form-control"
@@ -120,36 +104,37 @@
         </div>
         <p class="text-light">O livro foi devolvido?</p>
         <div class="form-check">
-            <label
-                class="form-check-label text-light"
-                for="flexRadioDefault1">
-                Sim
-            </label>
             <input
                 class="form-check-input"
                 type="radio"
                 name="rebounded_book"
                 id="flexRadioDefault1"
                 value="1"
+                {{ $loan->rebounded_book ? 'checked' : '' }}
             >
+            <label class="form-check-label" for="flexRadioDefault1">
+                Sim
+            </label>
         </div>
         <div class="form-check mb-3">
-            <label
-                class="form-check-label text-light"
-                for="flexRadioDefault2">
-                Não
-            </label>
             <input
                 class="form-check-input"
                 type="radio"
                 name="rebounded_book"
                 id="flexRadioDefault2"
                 value="0"
+                {{ !$loan->rebounded_book ? 'checked' : '' }}
             >
+            <label class="form-check-label" for="flexRadioDefault2">
+                Não
+            </label>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mb-4">
             <a href="{{ route('loans.list') }}" class="btn btn-secondary">Voltar</a>
             <button type="submit" class="btn btn-success">Editar</button>
         </div>
     </form>
 </div>
+
+</body>
+</html>

@@ -54,9 +54,9 @@
                 <td>{{ $user->updated_at }}</td>
                 <td>
                     <div class="d-flex justify-content-center">
-                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm me-1">Ver</a>
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm me-1">Editar</a>
-                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="{{ "#usersDelete".$user->id }}">
+                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm ms-1 me-1">Ver</a>
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm ms-1 me-1">Editar</a>
+                        <button type="button" class="btn btn-danger btn-sm ms-1 me-1" data-bs-toggle="modal" data-bs-target="{{ "#usersDelete".$user->id }}">
                             Excluir
                         </button>
                     </div>

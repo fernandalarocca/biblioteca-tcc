@@ -1,12 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Livro</title>
+    @include("layouts.assets.bootstrap")
+</head>
+<body class="bg-dark">
 @include("layouts.partials.navbar")
-@include("layouts.assets.bootstrap")
 
-<div class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
-    <h1 class="text-light mb-4">
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <h1 class="text-light mb-4 text-center mt-4">
         Preencha com as informações do livro!
     </h1>
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger w-75">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -14,14 +22,10 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('books.update', $book->id) }}" method="POST">
+    <form action="{{ route('books.update', $book->id) }}" method="POST" class="w-75">
         @csrf
         <div class="mb-3">
-            <label
-                for="exampleInputTitle1"
-                class="form-label text-light">
-                Título:
-            </label>
+            <label for="exampleInputTitle1" class="form-label text-light">Título:</label>
             <input
                 type="text"
                 class="form-control"
@@ -33,11 +37,7 @@
             >
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputPublished1"
-                class="form-label text-light">
-                Data de Publicação:
-            </label>
+            <label for="exampleInputPublished1" class="form-label text-light">Data de Publicação:</label>
             <input
                 type="date"
                 class="form-control"
@@ -49,11 +49,7 @@
             >
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputCategory1"
-                class="form-label text-light">
-                Categoria:
-            </label>
+            <label for="exampleInputCategory1" class="form-label text-light">Categoria:</label>
             <input
                 type="text"
                 class="form-control"
@@ -65,9 +61,7 @@
             >
         </div>
         <div class="mb-3">
-            <label for="exampleInputAuthor1" class="form-label text-light">
-                Autor:
-            </label>
+            <label for="exampleInputAuthor1" class="form-label text-light">Autor:</label>
             <select class="form-control" id="exampleInputAuthor1" name="author_id" aria-describedby="authorHelp">
                 @foreach($authorsResource as $author)
                     <option value="{{ $author->id }}" {{ $author->id == $book->author_id ? 'selected' : '' }}>
@@ -76,24 +70,17 @@
                 @endforeach
             </select>
         </div>
-        <div class="form-floating">
+        <div class="form-floating mb-3">
             <textarea
                 class="form-control"
                 placeholder="Leave a comment here"
                 id="floatingTextarea"
                 name="synopsis"
             >{{ $book->synopsis }}</textarea>
-            <label
-                for="floatingTextarea">
-                Sinopse
-            </label>
+            <label for="floatingTextarea">Sinopse</label>
         </div>
         <div class="mb-3">
-            <label
-                for="exampleInputQuantity1"
-                class="form-label text-light">
-                Quantidade em Estoque:
-            </label>
+            <label for="exampleInputQuantity1" class="form-label text-light">Quantidade em Estoque:</label>
             <input
                 type="number"
                 class="form-control"
@@ -104,9 +91,12 @@
                 value="{{ $book->quantity_in_stock }}"
             >
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mb-4">
             <a href="{{ route('books.list') }}" class="btn btn-secondary">Voltar</a>
             <button type="submit" class="btn btn-success">Editar</button>
         </div>
     </form>
 </div>
+
+</body>
+</html>
