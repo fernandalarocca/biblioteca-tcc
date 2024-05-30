@@ -8,6 +8,10 @@ Route::get('/', function () {
     return redirect('/public/home');
 });
 
+Route::get('/public', function () {
+    return redirect('/home');
+});
+
 Route::get('/home', function () {
     return view('welcome');
 });
