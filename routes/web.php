@@ -5,11 +5,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect('/public/home');
+    return redirect('/public/login');
 });
 
 Route::get('/public', function () {
-    return redirect('/home');
+    return redirect('/login');
 });
 
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('login');
