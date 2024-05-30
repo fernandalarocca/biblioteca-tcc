@@ -12,14 +12,12 @@ Route::get('/public', function () {
     return redirect('/home');
 });
 
-Route::get('/home', function () {
-    return view('welcome');
-});
-
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('login');
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('loginPost');
 
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/home', function () { return view('welcome'); });
+
     Route::get('authors', [\App\Http\Controllers\AuthorController::class, 'list'])->name("authors.list");
     Route::get('authors-show/{author}', [\App\Http\Controllers\AuthorController::class, 'show'])->name("authors.show");
     Route::post('authors-store', [\App\Http\Controllers\AuthorController::class, 'store'])->name("authors.store");
