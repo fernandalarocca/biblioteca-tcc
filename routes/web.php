@@ -5,14 +5,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect('/public/home');
+    return redirect('/public/welcome');
 });
 
-Route::get('/public', function () {
-    return redirect('/home');
+Route::get('/public/welcome', function () {
+    return redirect('/welcome');
 });
 
-Route::get('/home', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -20,6 +20,8 @@ Route::get('login', [\App\Http\Controllers\AuthController::class, 'showLogin'])-
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('loginPost');
 
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/home', function () { return view('home'); });
+
     Route::get('authors', [\App\Http\Controllers\AuthorController::class, 'list'])->name("authors.list");
     Route::get('authors-show/{author}', [\App\Http\Controllers\AuthorController::class, 'show'])->name("authors.show");
     Route::post('authors-store', [\App\Http\Controllers\AuthorController::class, 'store'])->name("authors.store");
