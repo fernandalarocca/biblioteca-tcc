@@ -51,12 +51,16 @@ Partindo agora para as funcionalidades que dizem respeito aos livros, elas vão 
 
 ### Empréstimos
 
-Por último, temos a função de empréstimos. Ela serve para quando o cliente pega um livro emprestado da biblioteca. Assim como os outros métodos, ela funcionará de maneira muito parecida, a única diferença é que tem algumas implementações a mais. Além disso, quando o empréstimo for criado, a quantidade de livros emprestados será automaticamente diminuída do estoque daquele livro em questão.<br>
+Temos a função de empréstimos. Ela serve para quando o cliente pega um livro emprestado da biblioteca. Assim como os outros métodos, ela funcionará de maneira muito parecida, a única diferença é que tem algumas implementações a mais. Além disso, quando o empréstimo for criado, a quantidade de livros emprestados será automaticamente diminuída do estoque daquele livro em questão.<br>
 Para utilizar clique em "Empréstimos" no cabeçalho.
 - Para criar um empréstimo, clique em "Novo Empréstimo" e preencha as informações de: Nome do cliente, CPF do cliente, telefone do cliente, livro escolhido, autor do livro em questão, quantidade e data de devolução. Importante ressaltar que a quantidade de livros emprestados tem que ser menor do que a quantidade em estoque daquele livro, senão não funcionará. Quando criado, o a quantidade de livros emprestados será removida (diminuida) do estoque daquele livro específico de maneira automática.
 - Para ver com mais detalhes as informações do empréstimo, clique em "Ver".
 - Agora para editar o empréstimo, aperte em "Editar" e mude as informações necessárias. Note que no formulário de edição, temos um campo a mais, ele serve para que quando o livro for devolvido, o bibliotecário deve marcar como como "Sim" e, se necessário, alterar a data de devolução. Quando esse campo for marcado como verdadeiro, ou seja, "Sim", a quantidade de livros emprestados será devolvida (adicionada) novamente ao estoque de maneira automática, para que o bibliotecário não precise fazer isso manualmente.
 - Por último, assim como nos outros, podemos excluir o empréstimo clicando no botão "Excluir", quando clicado abrirá um modal solicitando a confirmação da exclusão.
+
+### Logs
+
+Por últimos temos a tela de logs, histórico, do sistema. Ao clicar nele, vemos uma tabela mostrando todas as alterações feitas no sistema com data, hora, usuário, método e item.
 
 #### Informações importantes
 

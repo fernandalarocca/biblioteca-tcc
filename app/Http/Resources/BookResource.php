@@ -13,7 +13,7 @@ class BookResource extends JsonResource
             'title' => $this->title,
             'synopsis' => $this->synopsis,
             'category' => $this->category,
-            'published_at' => $this->published_at,
+            'published_at' => $this->published_at->format('d/m/Y H:i'),
             'quantity_in_stock' => $this->quantity_in_stock,
             'created_at' => $this->created_at->format('d/m/Y H:i'),
             'updated_at' => $this->updated_at->format('d/m/Y H:i'),
